@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ian S. Maglipas — IT Specialist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0f14;
+      --bg-card: #121a22;
+      --accent-primary: #00d9ff;
+      --accent-secondary: #00ff9d;
+      --accent-tertiary: #00a2ff;
+      --text-primary: #e0f0ff;
+      --text-secondary: #a0c0d0;
+      --text-muted: #7090a0;
+      --glow-primary: 0 0 10px #00d9ff, 0 0 20px #00d9ff66;
+      --glow-secondary: 0 0 10px #00ff9d, 0 0 20px #00ff9d66;
+      --glow-tertiary: 0 0 10px #00a2ff, 0 0 20px #00a2ff66;
+      --radius: 12px;
+      --max-width: 1100px;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html, body {
+      height: 100%;
+      font-family: 'Exo 2', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 217, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 157, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(0, 162, 255, 0.05) 0%, transparent 30%);
+    }
+    
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      box-shadow: var(--glow-primary);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+    }
+    
+    header img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-primary);
+      box-shadow: var(--glow-primary);
+      z-index: 1;
+    }
+    
+    header div {
+      flex: 1;
+      z-index: 1;
+    }
+    
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+    }
+    
+    header p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .tagline {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent-secondary), var(--accent-tertiary));
+      color: var(--bg-dark);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      box-shadow: var(--glow-secondary);
+    }
+    
+    /* Sections */
+    section {
+      margin-bottom: 2.5rem;
+      padding: 2rem;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(0, 217, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+    }
+    
+    section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-primary);
+      text-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    section h2::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-primary), transparent);
+    }
+    
+    section p, li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent-primary);
+    }
+    
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .project {
+      background: linear-gradient(145deg, rgba(18, 26, 34, 0.8), rgba(30, 40, 50, 0.8));
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 217, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    }
+    
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--glow-primary);
+    }
+    
+    .project h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--accent-primary);
+      margin-bottom: 0.8rem;
+    }
+    
+    .project p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Experience */
+    .experience-item {
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px dashed rgba(0, 217, 255, 0.2);
+      position: relative;
+    }
+    
+    .experience-item:last-child {
+      border-bottom: none;
+    }
+    
+    .experience-item strong {
+      color: var(--accent-primary);
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .experience-duration {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent-secondary), var(--accent-tertiary));
+      color: var(--bg-dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      box-shadow: var(--glow-secondary);
+    }
+    
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+    
+    .skill-item {
+      background: linear-gradient(145deg, rgba(0, 217, 255, 0.1), rgba(0, 255, 157, 0.1));
+      color: var(--accent-primary);
+      padding: 1rem;
+      border-radius: var(--radius);
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 217, 255, 0.2);
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .skill-item:hover {
+      transform: scale(1.05);
+      box-shadow: var(--glow-primary);
+      background: linear-gradient(145deg, rgba(0, 217, 255, 0.2), rgba(0, 255, 157, 0.2));
+    }
+    
+    /* Certificates */
+    .certificates {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .certificate {
+      background: linear-gradient(90deg, var(--accent-secondary), var(--accent-tertiary));
+      color: var(--bg-dark);
+      padding: 0.7rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: var(--glow-secondary);
+      transition: transform 0.3s ease;
+    }
+    
+    .certificate:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* Contact */
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem;
+      background: linear-gradient(145deg, rgba(18, 26, 34, 0.8), rgba(30, 40, 50, 0.8));
+      border-radius: var(--radius);
+      border: 1px solid rgba(0, 217, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      box-shadow: var(--glow-primary);
+      transform: translateY(-5px);
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .contact-details h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--accent-primary);
+      margin-bottom: 0.3rem;
+    }
+    
+    .contact-details p, .contact-details a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-details a:hover {
+      color: var(--accent-primary);
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      padding: 2rem 0;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(0, 217, 255, 0.1);
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    /* Grid background effect */
+    .grid-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image: 
+        linear-gradient(rgba(0, 217, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 217, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      
+      header img {
+        width: 120px;
+        height: 120px;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .projects {
+        grid-template-columns: 1fr;
+      }
+      
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .contact-info {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      header {
+        padding: 1.5rem;
+      }
+      
+      header h1 {
+        font-size: 1.5rem;
+      }
+      
+      section h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  
+  <div class="container">
+    <header>
+      <img src="Picture1.png" alt="Ian Maglipas">
+      <div>
+        <h1>IAN S. MAGLIPAS</h1>
+        <p>IT Specialist • Network & Systems Architect • 8+ Years Experience</p>
+        <p>Expert in healthcare IT environments, network infrastructure, and system optimization</p>
+        <span class="tagline">TECH-DRIVEN SOLUTIONS</span>
+      </div>
+    </header>
+
+    <section id="about">
+      <h2>ABOUT ME</h2>
+      <p>Dedicated IT Specialist with extensive expertise in network infrastructure, system maintenance, and remote support. Focused on efficiency, reliability, and continuous improvement in healthcare IT environments. I prioritize creating dependable systems that ensure healthcare professionals can focus on patient care without technological interruptions.</p>
+    </section>
+
+    <section id="projects">
+      <h2>KEY PROJECTS</h2>
+      <div class="projects">
+        <div class="project">
+          <h3>NETWORK MIGRATION</h3>
+          <p>Designed and deployed VLAN segmentation and switch configurations to minimize downtime during clinical system upgrades at University of Cebu Medical Center.</p>
+        </div>
+        <div class="project">
+          <h3>FIREWALL SECURITY REVAMP</h3>
+          <p>Re-engineered SonicWall and Fortinet rulesets, improving internal security and reducing security incidents by 40% through enhanced segmentation.</p>
+        </div>
+        <div class="project">
+          <h3>REMOTE SUPPORT OPTIMIZATION</h3>
+          <p>Standardized support workflows, improving SLA compliance by 25% and reducing average ticket resolution time through streamlined processes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>PROFESSIONAL EXPERIENCE</h2>
+      <div class="experience-item">
+        <strong>IT SPECIALIST</strong> — University of Cebu Medical Center
+        <div class="experience-duration">2016–2025</div>
+        <p>Supported 400+ users in a critical healthcare environment. Managed network operations, firewalls, Active Directory, VoIP systems, and CCTV infrastructure. Led multiple critical system migrations with zero data loss and minimal downtime.</p>
+      </div>
+      <div class="experience-item">
+        <strong>IT STAFF</strong> — Diamond Suites & Residences
+        <div class="experience-duration">2013–2015</div>
+        <p>Handled LAN/WAN administration and CCTV deployments. Provided comprehensive technical support and maintained IT infrastructure for hospitality operations, ensuring 99.9% uptime.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>TECHNICAL SKILLS</h2>
+      <div class="skills-grid">
+        <div class="skill-item">WINDOWS & LINUX</div>
+        <div class="skill-item">CISCO CLI</div>
+        <div class="skill-item">HP SWITCHES</div>
+        <div class="skill-item">SONICWALL</div>
+        <div class="skill-item">FORTINET</div>
+        <div class="skill-item">ACTIVE DIRECTORY</div>
+        <div class="skill-item">GOOGLE WORKSPACE</div>
+        <div class="skill-item">VOIP SYSTEMS</div>
+        <div class="skill-item">REMOTE SUPPORT</div>
+        <div class="skill-item">NETWORK DESIGN</div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <h2>CERTIFICATIONS</h2>
+      <div class="certificates">
+        <div class="certificate">CCNA: INTRO TO NETWORKS (2024)</div>
+        <div class="certificate">CCNA: SWITCHING & ROUTING (2024)</div>
+        <div class="certificate">CCNA: ENTERPRISE & SECURITY (2025)</div>
+        <div class="certificate">CISCO: INTRO TO CYBERSECURITY (2025)</div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>EDUCATION</h2>
+      <p><strong>B.S. INDUSTRIAL TECHNOLOGY</strong><br>Mandaue City College — Computer Technology (2009–2013)</p>
+    </section>
+
+    <section id="contact">
+      <h2>GET IN TOUCH</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-details">
+            <h3>EMAIL</h3>
+            <a href="mailto:imaglipas1992@gmail.com">imaglipas1992@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-details">
+            <h3>PHONE</h3>
+            <p>0923-582-1014</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-details">
+            <h3>LOCATION</h3>
+            <p>Cebu, Philippines</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 IAN S. MAGLIPAS — TECH-DRIVEN IT SOLUTIONS
+    </footer>
+  </div>
+
+  <script>
+    // Simple grid animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const grid = document.querySelector('.grid-bg');
+      let offset = 0;
+      
+      function animateGrid() {
+        offset = (offset + 0.5) % 50;
+        grid.style.backgroundPosition = `${offset}px ${offset}px`;
+        requestAnimationFrame(animateGrid);
+      }
+      
+      animateGrid();
+    });
+  </script>
+</body>
+</html>
